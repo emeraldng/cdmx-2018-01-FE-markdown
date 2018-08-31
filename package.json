@@ -4,7 +4,11 @@
   "description": "[Markdown](https://es.wikipedia.org/wiki/Markdown) es un lenguaje de marcado\r ligero muy popular entre developers. Es usado en muchísimas plataformas que\r manejan texto plano (GitHub, foros, blogs, ...), y es muy común\r encontrar varios archivos en ese formato en cualquier tipo de repositorio\r (empezando por el tradicional `README.md`).",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "eslint": "eslint --ext .js src/ test/",
+    "build": "webpack -p --progress --config webpack.config.js",
+    "dev-build": "webpack --progress -d --config webpack.config.js",
+    "watch": "webpack --progress -d --config webpack.config.js --watch"
   },
   "repository": {
     "type": "git",
@@ -18,6 +22,12 @@
   },
   "homepage": "https://github.com/emeraldng/cdmx-2018-01-FE-markdown#readme",
   "dependencies": {
-    "eslint": "^5.4.0"
+    "eslint": "^5.4.0",
+    "gulp": "^3.9.1",
+    "request": "^2.88.0",
+    "showdown": "^1.8.6"
+  },
+  "devDependencies": {
+    "gulp-markdown": "^3.0.0"
   }
 }
