@@ -7,24 +7,12 @@ fs.readFile('../PRUEBA.md', 'utf8', (error, data) => {
         console.log(`Error ${error}`);
     } else {
     //console.log(content);
-        let resarr = content.split('\r\n');
-        //console.log(resarr);
-        
-        linkarr(resarr);
+        const resarrs = content.split('\r\n');
+        //console.log(resarrs);
+        const strStr = resarrs.filter(resarr => {
+            return resarr.includes('(http');
+            
+        });
+        console.log(strStr);
     }
-
 });
-
-const linkarr = (resarr) => {
-    let newtxts = [];
-    for(let i=0; i<resarr.length; i++){
-        let newTxt = resarr[i].split(')')[0];
-        newtxts.push(newTxt);
-        
-        
-    }
-    console.log(newtxts);
-
-
-
-};
