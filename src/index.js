@@ -1,51 +1,32 @@
-const fs = require('fs');
+console.log(process.argv);
+const fs = require ('fs');
+//const path = require('path');
+const filepath = ('../PRUEBA.md');
 
-
-fs.readFile('../.md', 'utf8', (error, data) => {
-    let content = data;
-    if (error) {
-        console.log(`Error ${error}`);
-    } else {
-    //console.log(content);
-        const resarrs = content.split('\r\n');
-        //console.log(resarrs);
-        const strStr = resarrs.filter(resarr => {
-            return resarr.includes('(http');
+fs.readFileAsync = (filepath) => {
+    return new Promise((resolve, reject) => {
+        fs.readFile(filepath, 'utf8', (err, data) => {
+            if(err){ 
+                reject(err);}
+            else{
+                const mkdata = data;
+                resolve(mkdata);}
         });
-        console.log(strStr);
-        // for (const x of strStr) {
-        //     if (x.length === 0) break;
-        //     console.log(x);
-        //}
-    }
 });
-
-<<<<<<< HEAD
-const linkarr = (content) =>{
-    let regex = /^http[s]?://\w[\.\w]+$/i;
-    let matchstr = content.match(regex);
-    let url = matchstr;
-    console.log(url);
-    //iteratorarr(url);
-
 };
 
-// const iteratorarr = (url) =>{
-//   let arrstatus = [{
-//       'url': `${url}`,
+const separateByLineBreak = (mkdata) => {
+    const separator = mkdata.split('\r\n');
+    return separator; 
+};
 
-//   }];
 
-// }
-=======
-// var txt = 'herramienta usando [Node.js](https://nodejs.org/), que lea y analice archivos';
-// var newTxt = txt.split('(');
-// var arrPseudoUrls = [];
-// //console.log(newTxt);
 
-// for (var i = 1; i < newTxt.length; i++) {
-//     var pseudoURL = newTxt[i].split(')')[0];
-//     arrPseudoUrls.push(pseudoURL);
-//     console.log(arrPseudoUrls);
-// }
->>>>>>> 84b0269b407a1dde2e2acb65c31effaa166ed665
+fs.readFileAsync(filepath)
+    .then((mkdata) =>{
+        //console.log(mkdata);
+        separateByLineBreak(mkdata);
+        console.log(separateByLineBreak);
+    })
+    .catch((err) =>{
+        console.log('err!');
