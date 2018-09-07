@@ -1,3 +1,25 @@
+//console.log(process.argv);
+const fs = require ('fs');
+//const path = require('path');
+const filepath = ('../PRUEBA.md');
+
+const readFileAsync = (filepath) => {
+    return new Promise((resolve, reject) => {
+        fs.readFile(filepath, 'utf8', (err, data) => {
+            if(err) reject(err);
+            else resolve(data);
+        });
+    });
+};
+
+readFileAsync(filepath)
+    .then((contents) =>{
+        console.log(contents);
+    })
+    .catch((err) =>{
+        console.log('err!');
+        
+    });
 
 
 
@@ -27,19 +49,6 @@
 
 
 
-
-
-
-// var txt = 'herramienta usando [Node.js](https://nodejs.org/), que lea y analice archivos';
-// var newTxt = txt.split('(');
-// var arrPseudoUrls = [];
-// //console.log(newTxt);
-
-// for (var i = 1; i < newTxt.length; i++) {
-//     var pseudoURL = newTxt[i].split(')')[0];
-//     arrPseudoUrls.push(pseudoURL);
-//     console.log(arrPseudoUrls);
-// }
 
 
 
