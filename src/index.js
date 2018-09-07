@@ -19,9 +19,18 @@ fs.readFile('../README.md', 'utf8', (error, data) =>{
 });
 
 const linkarr = (content) =>{
-    let regex = /((http:\/\/|https:\/\/|www\.)[^\s]+)/gim;
+    let regex = /^http[s]?://\w[\.\w]+$/i;
     let matchstr = content.match(regex);
     let url = matchstr;
     console.log(url);
+    //iteratorarr(url);
+
 };
 
+// const iteratorarr = (url) =>{
+//   let arrstatus = [{
+//       'url': `${url}`,
+
+//   }];
+
+// }
