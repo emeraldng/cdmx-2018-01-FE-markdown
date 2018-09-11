@@ -1,4 +1,6 @@
 const fs = require('fs');
+//const path = require('path');
+
 
 
 fs.readFile('../.md', 'utf8', (error, data) => {

@@ -1,34 +1,84 @@
 //console.log(process.argv);
-const fs = require ('fs');
+const fs = require('fs');
 //const path = require('path');
 const filepath = ('../PRUEBA.md');
 
+
 fs.readFileAsync = (filepath) => {
-    return new Promise((resolve, reject) => {
+    return new Promise
+    ((resolve) => {
         fs.readFile(filepath, 'utf8', (err, data) => {
-            if(err){ 
-                reject(err);}
-            else{
+            if (err) {
+                console.log('err');
+            } else {
                 const mkdata = data;
-                resolve(mkdata);}
-        });
+                resolve(mkdata);
+            }
+        });                                                                                                                                                                                                                                              
     });
 };
 
 const separateByLineBreak = (mkdata) => {
-    const separator = mkdata.split('\r\n');
-    return separator; 
+    return new Promise
+    ((resolve) => {
+        const lines = mkdata.split('\r\n');
+        const semiLink = lines.filter(str =>{
+            return (str.includes('http'));
+        });
+        resolve(semiLink);
+        
+    });
+};
+
+const filterHttp = (mkdata, semiLink) => {
+    return new Promise
+    ((resolve) => {
+        const myArrayHtt = semiLink.map((e) => {
+            return (e.substring(e.lastIndexOf('(') + 1, e.lastIndexOf(')')));
+        });
+        resolve(myArrayHtt);
+    });
 };
 
 
-
 fs.readFileAsync(filepath)
-    .then((mkdata) =>{
-        //console.log(mkdata);
-        separateByLineBreak(mkdata);
-        console.log(separateByLineBreak);
-    })
-    .catch((err) =>{
-        console.log('err!');
-        
-    });
+    .then (
+        response => {
+            console.log(response);
+            return separateByLineBreak;
+        })
+    .then(
+        semiLink => {
+            console.log(semiLink);
+            return filterHttp;
+        })
+    .then(
+        myArrayHtt => {
+            console.log(myArrayHtt);
+        })
+    .catch(
+        error => {
+            console.log('error', error);
+        });
+
+// const separateByLineBreak = (mkdata) => {
+//     const lines = mkdata.split('\r\n');
+//     const semiLink = lines.filter(str =>{
+//         return (str.includes('http'));
+//     });
+//     return Promise.resolve(semiLink);
+// };
+
+// const filterHtpp = (separateByLineBreak, semiLink) => {
+//     semiLink.forEach(function(e){
+//         console.log(e.substring(e.lastIndexOf('(') + 1, e.lastIndexOf(')')));
+//     });
+// };
+
+
+// fs.readFileAsync(filepath)
+//     .then(separateByLineBreak)
+//     .then(fulfilled => console.log(fulfilled))
+//     .then(() => filterHttp(semiLink))
+//     .then(fulfilled => console.log(fulfilled))
+//     .catch(error => console.log(error.message));
