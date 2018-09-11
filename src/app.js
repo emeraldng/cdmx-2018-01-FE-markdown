@@ -40,6 +40,10 @@ const filterHttp = (mkdata, semiLink) => {
     });
 };
 
+// var txt = 'herramienta usando [Node.js](https://nodejs.org/), que lea y analice archivos';
+// var newTxt = txt.split('(');
+// var arrPseudoUrls = [];
+// //console.log(newTxt);
 
 fs.readFileAsync(filepath)
     .then (
