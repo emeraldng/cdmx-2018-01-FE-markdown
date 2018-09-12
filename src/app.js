@@ -70,7 +70,7 @@ fs.readFileAsync(filepath)
 //     const semiLink = lines.filter(str =>{
 //         return (str.includes('http'));
 //     });
-//     return Promise.resolve(semiLink);
+//     return Promise.resolve(semiLink);s
 // };
 
 // const filterHtpp = (separateByLineBreak, semiLink) => {
@@ -80,9 +80,9 @@ fs.readFileAsync(filepath)
 // };
 
 
-// fs.readFileAsync(filepath)
-//     .then(separateByLineBreak)
-//     .then(fulfilled => console.log(fulfilled))
-//     .then(() => filterHttp(semiLink))
-//     .then(fulfilled => console.log(fulfilled))
-//     .catch(error => console.log(error.message));
+fs.readFileAsync(filepath)
+    .then(separateByLineBreak)
+    .then(fulfilled => console.log(fulfilled))
+    .then(() => filterHttp(semiLink))
+    .then(fulfilled => console.log(fulfilled))
+    .catch(error => console.log(error.message));
