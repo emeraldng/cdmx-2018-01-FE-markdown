@@ -22,9 +22,12 @@
   },
   "homepage": "https://github.com/emeraldng/cdmx-2018-01-FE-markdown#readme",
   "dependencies": {
+    "bluebird": "^3.5.2",
     "eslint": "^5.4.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
     "link-check": "^4.4.4",
+    "mz": "^2.7.0",
+    "node-fetch": "^2.2.0",
     "request": "^2.88.0",
     "showdown": "^1.8.6"
   },
